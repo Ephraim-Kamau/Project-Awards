@@ -13,6 +13,11 @@ class Projects(models.Model):
         projects = cls.objects.filter()
         return projects
 
+    @classmethod
+    def search_by_title(cls,search_term):
+        projects = cls.objects.filter(title__icontains=search_term)
+        return projects    
+
 class Profile(models.Model):
     bio = models.TextField(max_length=200)
     contact = models.IntegerField(default=0, blank=True)

@@ -26,5 +26,19 @@ def past_projects(request,past_date):
         return redirect(projects_today)
     
     projects = Projects.today_projects()
-    return render(request, 'all-projects/past-projects.html', {"date": date,"projects":projects})   
+    return render(request, 'all-projects/past-projects.html', {"date": date,"projects":projects}) 
+
+def search_results(request):
+
+    if 'projects' in request.GET and request.GET["projects"]:
+        search_term = request.GET.get("projects")
+        searched_projects = Projects.search_by_title(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'all-projects/search.html',{"message":message,"projects": searched_projects})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'all-projects/search.html',{"message":message})
+
 
