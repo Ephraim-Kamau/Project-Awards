@@ -38,7 +38,7 @@ def search_results(request):
         return render(request, 'all-projects/search.html',{"message":message,"projects": searched_projects})
 
     else:
-        message = "You haven't searched for any term"
+        message = ""
         return render(request, 'all-projects/search.html',{"message":message})
 
 
