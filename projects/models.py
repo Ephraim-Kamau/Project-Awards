@@ -8,8 +8,8 @@ class Projects(models.Model):
 
 class Profile(models.Model):
     bio = models.TextField(max_length=200)
-    contact = models.IntegerField
-    projects = models.ForeignKey(Projects)
+    contact = models.IntegerField(default=0, blank=True)
+    projects = models.ForeignKey(Projects, null = True)
 
 class Image(models.Model):
     name = models.CharField(max_length=30)
