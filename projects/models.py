@@ -1,10 +1,17 @@
 from django.db import models
+import datetime as dt
 
 # Create your models here.
 class Projects(models.Model):
     title = models.TextField(max_length=200)
     description = models.TextField()
     link_url = models.URLField(max_length=200)
+
+    @classmethod
+    def today_projects(cls):
+        today = dt.date.today()
+        projects = cls.objects.filter()
+        return projects
 
 class Profile(models.Model):
     bio = models.TextField(max_length=200)
