@@ -1,25 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404
 import datetime as dt
 
 # Create your views here.
 def welcome(request):
-    return HttpResponse('Welcome to Project Awards')
+    return render(request, 'welcome.html')
 
 def projects_today(request):
     date = dt.date.today()
 
-    # FUNCTION TO CONVERT DATE OBJECT TO FIND EXACT DAY
-    day = convert_dates(date)
-    html = f'''
-        <html>
-            <body>
-                <h1>Projects for {day} {date.day}-{date.month}-{date.year}</h1>
-            </body>
-        </html>
-            '''
-    return HttpResponse(html)    
+    return render(request, 'all-projects/today-projects.html',{"date":date,})   
 
+# View Function to present news from past days
 def past_projects(request,past_date):
     try:
         # Converts data from the string Url
@@ -29,15 +21,10 @@ def past_projects(request,past_date):
         # Raise 404 error when ValueError is thrown
         raise Http404()    
 
-    day = convert_dates(date)
-    html = f'''
-        <html>
-            <body>
-                <h1>Projects for {day} {date.day}-{date.month}-{date.year}</h1>
-            </body>
-        </html>
-            '''
-    return HttpResponse(html)   
+    if date == dt.date.today():
+        return redirect(projects_today)
+    
+    return render(request, 'all-projects/past-projects.html', {"date": date})   
 
 def convert_dates(dates):
 
