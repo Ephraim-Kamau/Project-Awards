@@ -2,36 +2,20 @@
 {% block content %} 
 {{ block.super}}
 
-<div  class="container">
-<br><br>
-
-            
-            <h2>{{user}}</h2><hr>
-            <h2>{{projects_profile.profile_pic}}</h2>
-            <h2>Bio: {{ projects_profile.bio}}</h2><hr> 
-            <h2>Projects posted: 
-                <ul>
-                    <li>{{projects_item.title}}</li>
-                </ul>
-            </h2><hr>  
-            <h2>Contacts: {{ projects_profile.contacts}} </h2><hr>   
-            <a href="/new/profile" button class="btn btn-warning" type="submit" name="button">Edit Profile</button></a>       
-
-
-{% for projects_item in projects %}
-
 <div class="container">
-    
-        <div class="col col-lg-60">
-          <div class="col-md-6">
-            <div class="panel panel-primary">
-            <img src="{{projects_item.projects_image.url}}" class="img-responsive"  alt="Image">
-      </div>
+       
 
-  </div>
-</div>
-</div>
+        <h2>{{user}}</h2><hr>
+        <h2>{{projects_profile.profile_pic}}</h2>
+        <h2>Bio: {{ projects_profile.bio}}</h2><hr> 
+        <h2>Projects posted: 
+            <ul>
+                <li>{{projects_item.title}}</li>
+            </ul>
+        </h2><hr>  
+        <h2>Contacts: {{ projects_profile.contacts}} </h2><hr>   
+        <a href="/new/profile" button class="btn btn-warning" type="submit" name="button">Edit Profile</button></a>       
+     
+    </div>
 
-{% endfor %} 
-</div>
 {% endblock %}

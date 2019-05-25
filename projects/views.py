@@ -38,7 +38,7 @@ def new_project(request):
     current_user=request.user
 
     if request.method=='POST':
-        form=NewProjectForm(request.POST,request.FILES)
+        form=NewProjectsForm(request.POST,request.FILES)
         if form.is_valid():
             post = form.save(commit=False)      
             post.profile = current_user
