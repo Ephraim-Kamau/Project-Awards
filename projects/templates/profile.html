@@ -1,0 +1,67 @@
+{%extends 'base.html'%}
+{% block content %} 
+{{ block.super}}
+
+<div  class="container">
+<br><br>
+<div class="row justify-content-md-center">
+<div class="row">
+  <div class="col-md-1"> </div>
+  <div class="col-md-8">
+    <div class="row">
+      <div class="col-md-4">  
+        
+      </div>
+      <div class="col-md-8">
+        <div class=" idea">
+            
+        
+      <ul>
+            <a>{{user}}</a><hr> 
+            <a href="/new/post" button class="btn btn-success" type="submit" name="button">Upload Picture</button></a>
+            <button class="btn btn-info" type="submit" name="button">Edit Profile</button> 
+            <button class="btn btn-warning dropdown">
+              <a class="" data-toggle="dropdown" role="button" aria-expanded="false">Account
+                        <span class="caret"></span>
+                    </a>
+                <i class="fas fa-cog fa-spin"></i>     
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="/accounts/password/change">Change Password</a>
+                </li>
+                <li>
+                  <a href="/logout">Logout</a>
+                  <a href="">Cancel</a>
+                </li>
+              </ul>
+            </button>
+          </ul>
+              
+  <hr>
+            </div>
+
+  {% for projects_item in projects %}
+      
+<div class="container">
+    
+        <div class="col col-lg-60">
+          <div class="col-md-6">
+            <div class="panel panel-primary">
+            <img src="{{projects_item.projects_image.url}}" class="img-responsive"  alt="Image">
+      </div>
+
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+  {% endfor %}
+</div>
+{% endblock %}

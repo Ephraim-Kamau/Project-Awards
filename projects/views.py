@@ -13,6 +13,9 @@ def projects_today(request):
 
     return render(request, 'today-projects.html',{"date":date,"projects":projects})   
 
+def profile(request):
+
+    return render(request, 'profile.html')
 
 def search_results(request):
 
