@@ -5,15 +5,19 @@
 
 
 <div class="container">
-
     <!-- Looping through projects   -->
     {% for projects_item in projects %}
   
-    <div class="row">
+    
       <!-- displaying projects -->
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <div class="col-md-10">
+              <div class="w3-card-4" style="width:60%">
         <h2 class="text-center"> {{ projects_item.title }} </h2>
-        <img src="{{projects_item.projects_image.url}}" class="img-responsive" alt="Image">
+        <img src="{{projects_item.projects_image.url}}" class="img-responsive" alt="Image"><hr>
+        <h3>{{ projects_item.description }}</h3><hr>
+        <button class="btn btn-warning" type="submit" name="button">View More</button> 
+        <button class="btn btn-info" type="submit" name="button">Review</button> 
+        <button class="btn btn-success" type="submit" name="button">Project Link</button> 
       </div>
   
  
@@ -26,6 +30,9 @@
     </div>
     {% endfor %}
   
-  </div>
+
+
+</div>
+
   
   {% endblock %}

@@ -15,29 +15,11 @@
       <div class="col-md-8">
         <div class=" idea">
             
-        
-      <ul>
-            <a>{{user}}</a><hr> 
-            <a href="/new/post" button class="btn btn-success" type="submit" name="button">Upload Picture</button></a>
-            <button class="btn btn-info" type="submit" name="button">Edit Profile</button> 
-            <button class="btn btn-warning dropdown">
-              <a class="" data-toggle="dropdown" role="button" aria-expanded="false">Account
-                        <span class="caret"></span>
-                    </a>
-                <i class="fas fa-cog fa-spin"></i>     
-              <ul class="dropdown-menu" role="menu">
-                <li>
-                  <a href="/accounts/password/change">Change Password</a>
-                </li>
-                <li>
-                  <a href="/logout">Logout</a>
-                  <a href="">Cancel</a>
-                </li>
-              </ul>
-            </button>
-          </ul>
+            <h2>{{user}}</h2><hr> 
+            
+          
               
-  <hr>
+
             </div>
 
   {% for projects_item in projects %}
