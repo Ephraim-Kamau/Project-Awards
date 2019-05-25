@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404
 import datetime as dt
+from .forms import NewProfileForm,NewProjectsForm
 from .models import Projects,Image,Profile,Review
 from django.contrib.auth.decorators import login_required
 
@@ -16,6 +17,36 @@ def projects_today(request):
 def profile(request):
 
     return render(request, 'profile.html')
+
+@login_required(login_url='/accounts/login/')    
+def new_profile(request):
+    current_user=request.user
+
+    if request.method=='POST':
+        form=NewProfileForm(request.POST,request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)      
+            post.profile = current_user
+            post.save()
+        return redirect("profile")
+    else:
+        form = NewProfileForm() 
+    return render(request,'upload.html',{"form":form}) 
+
+@login_required(login_url='/accounts/login/')    
+def new_project(request):
+    current_user=request.user
+
+    if request.method=='POST':
+        form=NewProjectForm(request.POST,request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)      
+            post.profile = current_user
+            post.save()
+        return redirect("today-projects")
+    else:
+        form = NewProjectsForm() 
+    return render(request,'project.html',{"form":form})     
 
 def search_results(request):
 
