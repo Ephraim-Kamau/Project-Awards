@@ -29,3 +29,28 @@ class Image(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField()
     
+class Review(models.Model):
+    RATING_CHOICES = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+        (6, '6'),
+        (7, '7'),
+        (8, '8'),
+        (9, '9'),
+        (10, '10'),
+
+    )
+    projects = models.ForeignKey(Projects, null=True, blank=True, on_delete=models.CASCADE, related_name="reviews")
+    image = models.ForeignKey(Image, on_delete=models.CASCADE, related_name="reviews", null=True, blank=True)
+    design_rating = models.IntegerField(choices=RATING_CHOICES, default=0)
+    usability_rating = models.IntegerField(choices=RATING_CHOICES, default=0)
+    content_rating = models.IntegerField(choices=RATING_CHOICES, default=0)
+
+    def __str__(self):
+        return self.comment
+
+
+
