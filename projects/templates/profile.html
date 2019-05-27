@@ -2,20 +2,23 @@
 {% block content %} 
 {{ block.super}}
 
-<div class="container">
-       
 
-        <h2>{{user}}</h2><hr>
-        <h2>{{projects_profile.profile_pic}}</h2>
-        <h2>Bio: {{ projects_profile.bio}}</h2><hr> 
+
+<div class="container">
+      
+        <h2>Username: {{user}}</h2><hr>
+        <img src= "{{user.profile.profile_pic}}" >
+        <h2>Bio: {{ user.profile.bio}}</h2><hr> 
         <h2>Projects posted: 
             <ul>
                 <li>{{projects_item.title}}</li>
             </ul>
         </h2><hr>  
-        <h2>Contacts: {{ projects_profile.contacts}} </h2><hr>   
+        <h2>Contacts: {{ user.profile.contact}} </h2><hr>   
         <a href="/new/profile" button class="btn btn-warning" type="submit" name="button">Edit Profile</button></a>       
-     
+
+
+        
     </div>
 
 {% endblock %}

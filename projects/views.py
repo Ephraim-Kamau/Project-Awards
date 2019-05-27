@@ -1,18 +1,15 @@
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404
-import datetime as dt
 from .forms import NewProfileForm,NewProjectsForm
-from .models import Projects,Image,Profile,Review
+from .models import Projects,Image,Profile
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 @login_required(login_url='/accounts/login/')
 def projects_today(request):
-    date = dt.date.today()
-    projects = Projects.today_projects()
 
-    return render(request, 'today-projects.html',{"date":date,"projects":projects})   
+    return render(request, 'today-projects.html')   
 
 def profile(request):
 
@@ -36,6 +33,7 @@ def new_profile(request):
 @login_required(login_url='/accounts/login/')    
 def new_project(request):
     current_user=request.user
+    form = NewProjectsForm()
 
     if request.method=='POST':
         form=NewProjectsForm(request.POST,request.FILES)
