@@ -14,7 +14,6 @@ class Projects(models.Model):
     title = models.TextField(max_length=200)
     description = models.TextField()
     link_url = models.URLField(max_length=200)
-    profile = models.ForeignKey(Profile)
     projects_image = models.ImageField(upload_to = 'images/')
 
     @classmethod

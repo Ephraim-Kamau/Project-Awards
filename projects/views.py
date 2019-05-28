@@ -8,8 +8,9 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/accounts/login/')
 def projects_today(request):
+    projects = Projects.objects.all()
 
-    return render(request, 'today-projects.html')   
+    return render(request, 'today-projects.html', {"projects":projects})   
 
 def profile(request):
 
@@ -33,7 +34,6 @@ def new_profile(request):
 @login_required(login_url='/accounts/login/')    
 def new_project(request):
     current_user=request.user
-    form = NewProjectsForm()
 
     if request.method=='POST':
         form=NewProjectsForm(request.POST,request.FILES)

@@ -3,35 +3,31 @@
 {% block content %}
 {{block.super}}
 
+{% for project in projects %}
 
-<div class="container">
-    <!-- Looping through projects   -->
-    {% for projects_item in projects %}
-  
-    
-      <!-- displaying projects -->
-          <div class="col-md-10">
-              <div class="w3-card-4" style="width:60%">
-        <h2 class="text-center"> {{ projects_item.title }} </h2>
-        <img src="{{projects_item.projects_image.url}}" class="img-responsive" alt="Image"><hr>
-        <h3>{{ projects_item.description }}</h3><hr>
-        <button class="btn btn-warning" type="submit" name="button">Review</button> 
-        <a href="{{projects_item.link_url}}" button class="btn btn-success" type="submit" name="button">Project Link</button></a> 
-      </div>
-  
- 
+<div class="row">
 
-    </div>
-  
-    {% empty %}
-    <div class="row">
-      <h2 class="text-center">There Are no Projects</h2>
-    </div>
-    {% endfor %}
-  
-
+  <!-- displaying projects -->
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <div class="col-md-10">
+          <div class="w3-card-4" style="width:60%">
+    <h2 class="text-center"> {{ project.title }} </h2>
+    <img src="{{project.projects_image.url}}" class="img-responsive" alt="Image">
+    <h3>{{ project.description }}</h3><hr>
+    <button class="btn btn-info" type="submit" name="button">Review</button> 
+    <a href="{{project.link_url}}" button class="btn btn-success" type="submit" name="button">Project Link</button></a> 
+  </div>
 
 </div>
+
+</div>
+
+</div>
+
+
+
+{% endfor %}
+
 
   
   {% endblock %}
