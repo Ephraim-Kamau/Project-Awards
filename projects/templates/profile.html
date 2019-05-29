@@ -2,7 +2,6 @@
 {% block content %} 
 {{ block.super}}
 
-
 <div class="container">
 
     <!-- displaying projects -->
@@ -10,20 +9,15 @@
         <h2>Username: {{user}}</h2><hr>
         <img src= "{{user.profile.profile_pic.url}}" >
         <h2>Bio: {{ user.profile.bio}}</h2><hr> 
+        <h2>Project posted:</h2>
         {% for project in projects %}
-        <h2>Projects posted: 
-            <ul>
-                <li>{{project.title}}</li>
-            </ul>
-        </h2><hr>  
+        <h2><ul><li> {{project.title}}</li></ul></h2>
         {% endfor %}
+        <hr>
         <h2>Contacts:0{{ user.profile.contact}} </h2><hr>   
         <a href="/new/profile" button class="btn btn-warning" type="submit" name="button">Edit Profile</button></a>       
 
     </div>
 </div>
-</div>
-</div>
-
 
 {% endblock %}
