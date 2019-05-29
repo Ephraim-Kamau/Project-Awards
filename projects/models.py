@@ -9,11 +9,18 @@ class Profile(models.Model):
     contact = models.IntegerField(default=0, blank=True)
     profile_pic = models.ImageField(upload_to = 'images/')
 
+
+    @classmethod
+    def get_projects(cls):
+        projects= Projects.objects.all()
+        return projects 
+
     def save_profile(self):
         self.save() 
 
     def delete_profile(self):
-        self.delete()    
+        self.delete()  
+      
 
 
 class Projects(models.Model):
@@ -35,7 +42,12 @@ class Projects(models.Model):
     @classmethod
     def search_by_title(cls,search_term):
         projects = cls.objects.filter(title__icontains=search_term)
-        return projects   
+        return projects  
+
+    @classmethod
+    def get_projects(cls):
+        projects= Projects.objects.all()
+        return projects 
 
     def save_project(self):
         self.save() 

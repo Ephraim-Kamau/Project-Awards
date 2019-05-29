@@ -13,14 +13,13 @@ from .serializer import ProjectsSerializer,ProfileSerializer
 def projects_today(request):
     projects = Projects.objects.all()
 
-    return render(request, 'today-projects.html', {"projects":projects})   
+    return render(request, 'today-projects.html',{"projects":projects})   
 
 def profile(request):
     current_user=request.user
     projects = Projects.objects.filter(profile = current_user)
 
-
-    return render(request, 'profile.html', {"projects":projects,"current_user":current_user, "prrofile":profile})
+    return render(request, 'profile.html', {"projects":projects,"current_user":current_user, "profile":profile})
 
 @login_required(login_url='/accounts/login/')    
 def new_profile(request):
@@ -76,7 +75,7 @@ def find_project(request,project_id):
 
     return render(request, 'find_project.html', {"project":project, "project_id":project_id})
 
-class Projects(APIView):
+class Projecti(APIView):
     def get(self, request, format=None):
         all_projects = Project.objects.all()
         serializers = Project(all_projects, many=True)
