@@ -13,8 +13,11 @@ def projects_today(request):
     return render(request, 'today-projects.html', {"projects":projects})   
 
 def profile(request):
+    current_user=request.user
+    projects = Projects.objects.filter(profile = current_user)
 
-    return render(request, 'profile.html')
+
+    return render(request, 'profile.html', {"projects":projects,"current_user":current_user, "prrofile":profile})
 
 @login_required(login_url='/accounts/login/')    
 def new_profile(request):
@@ -38,10 +41,10 @@ def new_project(request):
     if request.method=='POST':
         form=NewProjectsForm(request.POST,request.FILES)
         if form.is_valid():
-            post = form.save(commit=False)      
-            post.profile = current_user
+            post = form.save(commit=False) 
+            post.profile = current_user     
             post.save()
-        return redirect("today-projects")
+        return redirect('projectsToday')
     else:
         form = NewProjectsForm() 
     return render(request,'project.html',{"form":form})     
@@ -59,4 +62,13 @@ def search_results(request):
         message = "You haven't searched for any projects!!"
         return render(request, 'search.html',{"message":message})
 
+def find_project(request,project_id):
+    project_id
+    try :
+        project = Project.objects.get(user_id = project_id)
 
+    except ObjectDoesNotExist:
+        
+        raise Http404()
+
+    return render(request, 'find_project.html', {"project":project, "project_id":project_id})

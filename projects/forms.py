@@ -9,9 +9,4 @@ class NewProfileForm(forms.ModelForm):
 class NewProjectsForm(forms.ModelForm):
     class Meta:
         model=Projects
-        fields = (
-            'title',
-            'description',
-            'link_url',
-            'projects_image'
-        )  
+        exclude= []

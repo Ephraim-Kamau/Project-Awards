@@ -15,7 +15,7 @@
       </div>
       <br>
       <div class="uploads">
-        <form class="form-group" action="{%url 'new_profile'%}" method="post" enctype="multipart/form-data">
+        <form class="form-group" action="{%url 'new_project'%}" method="post" enctype="multipart/form-data">
           <h3>New Project</h3>
           {% csrf_token%}
           {% bootstrap_form form%}
