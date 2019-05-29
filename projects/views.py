@@ -3,6 +3,9 @@ from django.http  import HttpResponse,Http404
 from .forms import NewProfileForm,NewProjectsForm
 from .models import Projects,Image,Profile
 from django.contrib.auth.decorators import login_required
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import ProjectsSerializer,ProfileSerializer
 
 # Create your views here.
 
@@ -72,3 +75,15 @@ def find_project(request,project_id):
         raise Http404()
 
     return render(request, 'find_project.html', {"project":project, "project_id":project_id})
+
+class Projects(APIView):
+    def get(self, request, format=None):
+        all_projects = Project.objects.all()
+        serializers = Project(all_projects, many=True)
+        return Response(serializers.data)
+
+class Profile(APIView):
+    def get(self, request, format=None):
+        all_profile = Profile.objects.all()
+        serializers = Profile(all_profile, many=True)
+        return Response(serializers.data)

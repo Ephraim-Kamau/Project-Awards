@@ -12,6 +12,9 @@ class Profile(models.Model):
     def save_profile(self):
         self.save() 
 
+    def delete_profile(self):
+        self.delete()    
+
 
 class Projects(models.Model):
     title = models.TextField(max_length=200)
@@ -37,6 +40,9 @@ class Projects(models.Model):
     def save_project(self):
         self.save() 
 
+    def delete_project(self):
+        self.delete()     
+
        
 
 class Image(models.Model):
@@ -45,5 +51,7 @@ class Image(models.Model):
     
     def save_image(self):
         self.save()
+
+       
 
 
